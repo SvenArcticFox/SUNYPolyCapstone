@@ -1,0 +1,25 @@
+{
+  "name": "at-robots-language",
+  "displayName": "ATRobotsLanguage",
+  "description": "Adds AT-Robots Assembly language support",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "atrobots",
+      "aliases": ["AT-Robots Assembly", "atrobots"],
+      "extensions": [".at2",".atl"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "atrobots",
+      "scopeName": "source.at2",
+      "path": "./syntaxes/atrobots.tmLanguage.json"
+    }]
+  }
+}
