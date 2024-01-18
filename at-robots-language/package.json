@@ -13,7 +13,7 @@
     "languages": [{
       "id": "atrobots",
       "aliases": ["AT-Robots Assembly", "atrobots"],
-      "extensions": [".at2",".atl"],
+      "extensions": [".at2"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
