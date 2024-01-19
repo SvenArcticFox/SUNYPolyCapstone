@@ -13,7 +13,13 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.atrobots",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b((?i)jne|jge)\\b"
+			}]
+		},
+		"operator": {
+			"patterns": [{
+				"name": "keyword.operator.atrobots",
+				"match": "\\b((?i)ADD|INC|DEC|SHL|SHR|ROL|ROR|SAL|SAR|NEG|mod|CMP)\\b"
 			}]
 		},
 		"strings": {
