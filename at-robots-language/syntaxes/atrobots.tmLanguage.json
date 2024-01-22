@@ -7,19 +7,46 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#instruction"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#label"
+		},
+		{
+			"include": "#entity"
+		},
+		{
+			"include": "#ignore"
 		}
 	],
 	"repository": {
+		"ignore": {
+			"patterns": [{
+				"name": "ignore.atrobots",
+				"match": "[ \\t\\b\\v\\f\\r]+"
+			}]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.atrobots",
 				"match": "\\b((?i)jne|jge)\\b"
 			}]
 		},
-		"operator": {
+		"comment": {
 			"patterns": [{
-				"name": "keyword.operator.atrobots",
-				"match": "\\b((?i)ADD|INC|DEC|SHL|SHR|ROL|ROR|SAL|SAR|NEG|mod|CMP)\\b"
+				"name": "comment.line.atrobots",
+				"match": ";.*"
+			}]
+		},
+		"instruction" :{
+			"patterns": [{
+				"name": "keyword.operator.new.atrobots",
+				"match": "\\b(?i)(ADD|INC|DEC|SHL|SHR|ROL|ROR|SAL|SAR|NEG|mod|CMP)\\b"
 			}]
 		},
 		"strings": {
@@ -32,6 +59,12 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"label": {
+			"patterns": [{
+				"name": "entity.name.function",
+				"match": "!.*"
+			}]
 		}
 	},
 	"scopeName": "source.at2"
