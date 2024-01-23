@@ -22,6 +22,9 @@
 		},
 		{
 			"include": "#ignore"
+		},
+		{
+			"include": "#constant"
 		}
 	],
 	"repository": {
@@ -61,9 +64,11 @@
 			]
 		},
 		"label": {
+			"name": "entity.name.function",
+			"begin": "!",
+			"end": " ",
 			"patterns": [{
-				"name": "entity.name.function",
-				"match": "!.*"
+
 			}]
 		}
 	},
