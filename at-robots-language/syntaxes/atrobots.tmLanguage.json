@@ -37,7 +37,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.atrobots",
-				"match": "\\b((?i)jne|jge)\\b"
+				"match": "\\b(?i)(jne|jge|nop|ret|call|jmp|cmp|jls|jgr|je|jle|jz|jnz|jtl|xchg|do|loop|test|mov|addr|get|put|int|ipo|in|opo|out|del|push|pop|err)\\b"
 			}]
 		},
 		"comment": {
@@ -49,7 +49,7 @@
 		"instruction" :{
 			"patterns": [{
 				"name": "keyword.operator.new.atrobots",
-				"match": "\\b(?i)(ADD|INC|DEC|SHL|SHR|ROL|ROR|SAL|SAR|NEG|mod|CMP)\\b"
+				"match": "\\b(?i)(ADD|INC|DEC|SHL|SHR|ROL|ROR|SAL|SAR|NEG|mod|sub|or|and|xor|not|mpy|div)\\b"
 			}]
 		},
 		"strings": {
