@@ -25,6 +25,12 @@
 		},
 		{
 			"include": "#constant"
+		},
+		{
+			"include": "#operator"
+		},
+		{
+			"include": "#storage"
 		}
 	],
 	"repository": {
@@ -42,7 +48,7 @@
 		},
 		"comment": {
 			"patterns": [{
-				"name": "comment.line.atrobots",
+				"name": "comment.line.character.atrobots",
 				"match": ";.*"
 			}]
 		},
@@ -66,10 +72,7 @@
 		"label": {
 			"name": "entity.name.function",
 			"begin": "!",
-			"end": " ",
-			"patterns": [{
-
-			}]
+			"end": " "
 		}
 	},
 	"scopeName": "source.at2"
