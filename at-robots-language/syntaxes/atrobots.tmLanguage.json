@@ -37,6 +37,9 @@
 		},
 		{
 			"include": "#number_label"
+		},
+		{
+			"include": "#hexadecimal_numbers"
 		}
 	],
 	"repository": {
@@ -135,6 +138,12 @@
 				"begin": " ",
 				"end": "( |\\n|\\r|\\t)",
 				"match": "(?i)([a-z]+|_|-)"
+			}]
+		},
+		"hexadecimal_numbers": {
+			"patterns": [{
+				"name": "constant.numeric.hex.atrobots",
+				"match": "\\b(?i)0x(_*[0-9a-f])+\\b"
 			}]
 		}
 		
