@@ -14,7 +14,11 @@
       "id": "atrobots",
       "aliases": ["AT-Robots Assembly", "atrobots"],
       "extensions": [".at2"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./T-ROBOTS.ICO",
+        "dark": "./T-ROBOTS.ICO"
+      }
     }],
     "grammars": [{
       "language": "atrobots",

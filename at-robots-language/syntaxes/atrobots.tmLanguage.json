@@ -18,26 +18,32 @@
 			"include": "#label"
 		},
 		{
-			"include": "#entity"
-		},
-		{
 			"include": "#ignore"
 		},
 		{
-			"include": "#constant"
+			"include": "#numbers"
 		},
 		{
-			"include": "#operator"
+			"include": "#comma"
 		},
 		{
-			"include": "#storage"
+			"include": "#register"
+		},
+		{
+			"include": "#compliler_directives"
+		},
+		{
+			"include": "#define_variables"
+		},
+		{
+			"include": "#number_label"
 		}
 	],
 	"repository": {
 		"ignore": {
 			"patterns": [{
 				"name": "ignore.atrobots",
-				"match": "[ \\t\\b\\v\\f\\r]+"
+				"match": "[ \\t\\b\\v\\f\\r\\n]+"
 			}]
 		},
 		"keywords": {
@@ -70,10 +76,68 @@
 			]
 		},
 		"label": {
-			"name": "entity.name.function",
+			"name": "entity.name.function.atrobots",
 			"begin": "!",
-			"end": " "
+			"end": "( |\\n|\\r|\\t)"
+		},
+		"number_label" : {
+			"name": "entity.name.function.atrobots",
+			"begin": ":[0-9]+",
+			"end": "((?i)[a-z]| |\\n|\\r|\\t)"
+		},
+		"register": {
+			"patterns": [{
+				"name": "support.variable.atrobots",
+				"match": "\\b(?i)([a-f]x|sp|Flags)\\b"
+			}]
+			
+		},
+		"comma": {
+			"patterns": [{
+					"name": "support.atrobots",
+					"match": "[,]"
+			}]
+		},
+		"numbers": {
+			"patterns" :[{
+				"name": "constant.numeric.dec.atrobots",
+				"match": "\\b[-+]?[0-9]([0-9])*\\b"
+			}]
+		},
+		"compliler_directives": {
+			"begin": "(?i)#(msg|time|config)",
+			"end": "(\\n|\\r|\\t)",
+			"name": "storage.modifier.atrobots",
+			"patterns": [{
+				"name": "keyword.operator.atrobots",
+				"match": "="
+			},
+			{
+				"name": "entity.name.type.atrobots",
+				"begin": " ",
+				"end": "=",
+				"match": "(?i)[a-z]+"
+			},
+			{
+				"name": "constant.numeric.dec.atrobots",
+				"begin": "=",
+				"match": "\\b[-+]?[0-9]([0-9])*\\b",
+				"end": "(\\n|\\r)"
+				
+			}]
+		},
+		"define_variables": {
+			"begin": "(?i)#def",
+			"end": "(\\n|\\r|\\t)",
+			"name": "storage.modifier.atrobots",
+			"patterns": [{
+				"name": "variable.other.atrobots",
+				"begin": " ",
+				"end": "( |\\n|\\r|\\t)",
+				"match": "(?i)([a-z]+|_|-)"
+			}]
 		}
+		
 	},
 	"scopeName": "source.at2"
 }
