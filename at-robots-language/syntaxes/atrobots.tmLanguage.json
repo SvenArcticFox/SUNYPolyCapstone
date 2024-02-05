@@ -40,6 +40,12 @@
 		},
 		{
 			"include": "#hexadecimal_numbers"
+		},
+		{
+			"include": "#ports"
+		},
+		{
+			"include": "#interrupts"
 		}
 	],
 	"repository": {
@@ -144,6 +150,20 @@
 			"patterns": [{
 				"name": "constant.numeric.hex.atrobots",
 				"match": "\\b(?i)(_*[0-9a-f])+h\\b"
+			}]
+		},
+		"ports": {
+			"patterns": [{
+				"name": "storage.type.class.atrobots",
+				"begin": "(?i)p_",
+				"end": "(?i)(spedometer|scanarc|heat|compass|turret_ofs|turret_abs|damage|armor|scan|accuracy|radar|random|rand|throttle|ofs_turret|trotate|abs_turret|taim|steering|weap|weapon|fire|sonar|arc|overburn|transponder|shutdown|channel|minelayer|minetrigger|shield|shields)"
+			}]
+		},
+		"interrupts": {
+			"patterns": [{
+				"name": "storage.type.var.atrobots",
+				"begin": "(?i)i_",
+				"end": "(?i)(destruct|reset|locate|keepshift|overburn|id|timer|angle|tid|targetid|tinfo|targetinfo|ginfo|gameinfo|rinfo|robotinfo|collisions|resetcolcnt|transmit|receive|dataready|clearcom|kills|deaths|clearmeters)"
 			}]
 		}
 		
