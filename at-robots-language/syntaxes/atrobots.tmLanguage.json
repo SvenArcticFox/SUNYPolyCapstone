@@ -36,9 +36,6 @@
 			"include": "#define_variables"
 		},
 		{
-			"include": "#number_label"
-		},
-		{
 			"include": "#hexadecimal_numbers"
 		},
 		{
@@ -85,14 +82,16 @@
 			]
 		},
 		"label": {
-			"name": "entity.name.function.atrobots",
-			"begin": "!",
-			"end": "( |\\n|\\r|\\t)"
-		},
-		"number_label" : {
-			"name": "entity.name.function.atrobots",
-			"begin": ":[0-9]+",
-			"end": "((?i)[a-z]| |\\n|\\r|\\t)"
+			"patterns": [{
+				"name": "entity.name.function.atrobots",
+				"begin": "!",
+				"end": "( |\\n|\\r|\\t)"
+			},
+			{
+				"name": "entity.name.function.atrobots",
+				"begin": ":[0-9]+",
+				"end": "((?i)[a-z]| |\\n|\\r|\\t)"
+			}]
 		},
 		"register": {
 			"patterns": [{
