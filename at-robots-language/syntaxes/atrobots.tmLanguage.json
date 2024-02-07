@@ -129,7 +129,7 @@
 			{
 				"name": "string.atrobots",
 				"begin": " ",
-				"match": "(?i)([a-z]|[0-9])+",
+				"match": "(?i)(.)+",
 				"end": "(\\n|\\r)"
 			}]
 		},
