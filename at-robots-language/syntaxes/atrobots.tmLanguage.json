@@ -30,9 +30,6 @@
 			"include": "#register"
 		},
 		{
-			"include": "#compliler_directives"
-		},
-		{
 			"include": "#define_variables"
 		},
 		{
@@ -43,6 +40,18 @@
 		},
 		{
 			"include": "#interrupts"
+		},
+		{
+			"include": "#message_compiler_directive"
+		},
+		{
+			"include": "#time_compiler_directive"
+		},
+		{
+			"include": "#config_compiler_directive"
+		},
+		{
+			"include": "#variable_identifier"
 		}
 	],
 	"repository": {
@@ -112,11 +121,38 @@
 				"match": "\\b[-+]?[0-9]([0-9])*\\b"
 			}]
 		},
-		"compliler_directives": {
-			"begin": "(?i)#(msg|time|config)",
-			"end": "(\\n|\\r|\\t)",
+		"message_compiler_directive": {
 			"name": "storage.modifier.atrobots",
+			"begin": "(?i)#msg",
+			"end": "(\\n|\\r)",
+			"patterns": [
+			{
+				"name": "string.atrobots",
+				"begin": " ",
+				"match": "(?i)([a-z]|[0-9])+",
+				"end": "(\\n|\\r)"
+			}]
+		},
+		"time_compiler_directive": {
 			"patterns": [{
+				"name": "storage.modifier.atrobots",
+				"begin": "(?i)#time",
+				"end": " "
+			},
+			{
+				"name": "constant.numeric.dec.atrobots",
+				"begin": " ",
+				"end": "(\\n|\\r)",
+				"match": "\\b[-+]?[0-9]([0-9])*\\b"
+			}]
+		},
+		"config_compiler_directive": {
+			"patterns": [{
+				"name": "storage.modifier.atrobots",
+				"begin": "(?i)#config",
+				"end": " "
+			},
+			{
 				"name": "keyword.operator.atrobots",
 				"match": "="
 			},
@@ -124,20 +160,13 @@
 				"name": "entity.name.type.atrobots",
 				"begin": " ",
 				"end": "=",
-				"match": "(?i)[a-z]+"
-			},
-			{
-				"name": "constant.numeric.dec.atrobots",
-				"begin": "=",
-				"match": "\\b[-+]?[0-9]([0-9])*\\b",
-				"end": "(\\n|\\r)"
-				
+				"match": "(?i)(scanner|weapon|armor|engine|heatsinks|mines|shield)"
 			}]
 		},
 		"define_variables": {
 			"begin": "(?i)#def",
 			"end": "(\\n|\\r|\\t)",
-			"name": "storage.modifier.atrobots",
+			"name": "storage.type.var.atrobots",
 			"patterns": [{
 				"name": "variable.other.atrobots",
 				"begin": " ",
@@ -153,16 +182,22 @@
 		},
 		"ports": {
 			"patterns": [{
-				"name": "storage.type.class.atrobots",
+				"name": "support.variable.atrobots",
 				"begin": "(?i)p_",
 				"end": "(?i)(spedometer|scanarc|heat|compass|turret_ofs|turret_abs|damage|armor|scan|accuracy|radar|random|rand|throttle|ofs_turret|trotate|abs_turret|taim|steering|weap|weapon|fire|sonar|arc|overburn|transponder|shutdown|channel|minelayer|minetrigger|shield|shields)"
 			}]
 		},
 		"interrupts": {
 			"patterns": [{
-				"name": "storage.type.var.atrobots",
+				"name": "support.variable.atrobots",
 				"begin": "(?i)i_",
 				"end": "(?i)(destruct|reset|locate|keepshift|overburn|id|timer|angle|tid|targetid|tinfo|targetinfo|ginfo|gameinfo|rinfo|robotinfo|collisions|resetcolcnt|transmit|receive|dataready|clearcom|kills|deaths|clearmeters)"
+			}]
+		},
+		"variable_identifier": {
+			"patterns": [{
+				"name": "variable.atrobots",
+				"match": "\\b(?i)[_a-z][_a-z0-9]*\\b"
 			}]
 		}
 		
