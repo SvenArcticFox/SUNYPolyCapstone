@@ -3,6 +3,9 @@
 	"name": "AT-Robots Assembly",
 	"patterns": [
 		{
+			"include": "#memory_address"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -198,6 +201,12 @@
 			"patterns": [{
 				"name": "variable.atrobots",
 				"match": "\\b(?i)[_a-z][_a-z0-9]*\\b"
+			}]
+		},
+		"memory_address": {
+			"patterns": [{
+				"name": "variable.atrobots",
+				"match": "@[0-9]+"
 			}]
 		}
 		
