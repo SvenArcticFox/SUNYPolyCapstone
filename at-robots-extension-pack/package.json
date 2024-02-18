@@ -1,0 +1,15 @@
+{
+  "name": "at-robots-extension-pack",
+  "displayName": "AT-Robots Extension Pack",
+  "description": "All AT-Robots Extensions",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [ 
+    "publisher.extensionName"
+  ]
+}
