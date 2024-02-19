@@ -67,7 +67,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.atrobots",
-				"match": "\\b(?i)(jne|jge|nop|ret|call|jmp|cmp|jls|jgr|je|jle|jz|jnz|jtl|xchg|do|loop|test|mov|addr|get|put|int|ipo|in|opo|out|del|push|pop|err|set)\\b"
+				"match": "\\b(?i)(jne|jge|nop|ret|call|jmp|cmp|jls|jgr|je|jle|jz|jnz|jtl|xchg|do|loop|test|mov|addr|get|put|int|ipo|in|opo|out|del|push|pop|err|set|ja|jb|jeq|swap|gsb|delay|goto|error)\\b"
 			}]
 		},
 		"comment": {
