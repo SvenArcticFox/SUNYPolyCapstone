@@ -16,6 +16,10 @@
       {
         "command": "atrob-run.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "atrob-run.run",
+        "title": "Run AT-Robots"
       }
     ]
   },

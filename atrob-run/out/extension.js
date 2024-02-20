@@ -41,6 +41,9 @@ function activate(context) {
         // Display a message box to the user
         vscode.window.showInformationMessage('Hello World from atrobots-runner!');
     });
+    let run = vscode.commands.registerCommand('atrob-run.run', () => {
+        vscode.window.showInformationMessage('This is the run function!');
+    });
     context.subscriptions.push(disposable);
 }
 exports.activate = activate;
