@@ -83,7 +83,20 @@ export function activate(context: vscode.ExtensionContext) {
 			console.log("YO MAMAAAAAAAAAA!!! OHHHHHHH!!!");
 			return;
 		}
+		
 
+		if (process.platform === 'win32') {
+			// run DosBox-x with AT-Robots
+		}
+		else if (process.platform === 'darwin') {
+			cp.exec("open -a " + dosBoxXLoc + " -n --args -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+				console.log('stdout: ' + stdout);
+				console.log('stderr: ' + stderr);
+				if (err) {
+					console.log('error: ' + err);
+				}
+			});
+		}
 		
 		
 
