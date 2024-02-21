@@ -20,6 +20,10 @@
       {
         "command": "atrob-run.run",
         "title": "Run AT-Robots"
+      },
+      {
+        "command": "atrob-run.setATRobLoc",
+        "title": "Set AT-Robots location"
       }
     ]
   },

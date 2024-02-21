@@ -28,10 +28,25 @@ exports.deactivate = exports.activate = void 0;
 // Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(require("vscode"));
 const localStorage_1 = require("./localStorage");
+const fs = __importStar(require("fs"));
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 function activate(context) {
-    let storageManage = new localStorage_1.LocalStorageService(context.globalState);
+    let storageManager = new localStorage_1.LocalStorageService(context.globalState);
+    let dosBoxXLoc;
+    let atRobLoc;
+    if (storageManager.getValue("dosBoxXLoc") !== undefined) {
+        dosBoxXLoc = storageManager.getValue("dosBoxLoc");
+    }
+    else {
+        dosBoxXLoc = "";
+    }
+    if (storageManager.getValue("atRobLoc") !== undefined) {
+        atRobLoc = storageManager.getValue("atRobLoc");
+    }
+    else {
+        atRobLoc = "";
+    }
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "atrob-run" is now active!');
@@ -44,9 +59,62 @@ function activate(context) {
         vscode.window.showInformationMessage('Hello World from atrobots-runner!');
     });
     let run = vscode.commands.registerCommand('atrob-run.run', () => {
+        const cp = require("child_process");
+        if (dosBoxXLoc === "") {
+            if (process.platform === 'win32') {
+                if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
+                    dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
+                }
+                else {
+                    vscode.window.showErrorMessage("DosBox-X could not be found. Please use the \"Set DosBox-X Location\" command to set the location DOSBox-X executable.");
+                    return;
+                }
+            }
+            else if (process.platform === 'darwin') {
+                if (fs.existsSync("C:\\DOSBox-X\\")) {
+                    dosBoxXLoc = "/Applications/dosbox-x";
+                }
+                else {
+                    vscode.window.showErrorMessage("DosBox-X could not be found. Please use the \"Set DosBox-X Location\" command to set the location DOSBox-X executable.");
+                    return;
+                }
+            }
+            else {
+                vscode.window.showErrorMessage("Sorry, your system is not supported by this extension.");
+                return;
+            }
+            storageManager.setValue("dosBoxXloc", dosBoxXLoc);
+        }
+        console.log(atRobLoc);
+        if (atRobLoc === "") {
+            vscode.window.showErrorMessage("AT-Robots could not be found. Please specify the location of the folder that contains AT-Robots by using the \"Set AT-Robots Location\" command.");
+            console.log("A dog with human fingers");
+            return;
+        }
+        else if (!fs.existsSync(atRobLoc)) {
+            vscode.window.showErrorMessage("AT-Robots could not be found. Please specify the location of the folder that contains AT-Robots by using the \"Set AT-Robots Location\" command.");
+            console.log("YO MAMAAAAAAAAAA!!! OHHHHHHH!!!");
+            return;
+        }
         vscode.window.showInformationMessage('This is the run function!');
     });
+    let setAtRobLoc = vscode.commands.registerCommand('atrob-run.setATRobLoc', async function () {
+        const tempLoc = await vscode.window.showInputBox({
+            placeHolder: "AT-Robots Location",
+            prompt: "Enter the folder that contains the AT-Robots executable",
+        });
+        if (tempLoc === '') {
+            vscode.window.showErrorMessage("AT-Robots location was not specified");
+        }
+        if (tempLoc !== undefined) {
+            console.log(tempLoc);
+            atRobLoc = tempLoc;
+            storageManager.setValue("atRobLoc", atRobLoc);
+        }
+    });
     context.subscriptions.push(disposable);
+    context.subscriptions.push(run);
+    context.subscriptions.push(setAtRobLoc);
 }
 exports.activate = activate;
 // This method is called when your extension is deactivated
