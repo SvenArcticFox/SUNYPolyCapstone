@@ -57,8 +57,8 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			}
 			else if (process.platform === 'darwin') {
-				if (fs.existsSync("C:\\DOSBox-X\\")) {
-					dosBoxXLoc = "/Applications/dosbox-x";
+				if (fs.existsSync("/Applications/dosbox-x.app")) {
+					dosBoxXLoc = "/Applications/dosbox-x.app";
 				}
 				else {
 					vscode.window.showErrorMessage("DosBox-X could not be found. Please use the \"Set DosBox-X Location\" command to set the location DOSBox-X executable.");
