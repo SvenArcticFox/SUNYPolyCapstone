@@ -61,6 +61,7 @@ function activate(context) {
     let run = vscode.commands.registerCommand('atrob-run.run', () => {
         const cp = require("child_process");
         if (dosBoxXLoc === "") {
+            // if windows
             if (process.platform === 'win32') {
                 if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
                     dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
@@ -70,6 +71,7 @@ function activate(context) {
                     return;
                 }
             }
+            // if mac os
             else if (process.platform === 'darwin') {
                 if (fs.existsSync("/Applications/dosbox-x.app")) {
                     dosBoxXLoc = "/Applications/dosbox-x.app";

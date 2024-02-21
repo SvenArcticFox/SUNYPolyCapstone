@@ -47,6 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const cp = require("child_process");
 
 		if (dosBoxXLoc === "") {
+			// if windows
 			if (process.platform === 'win32') {
 				if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
 					dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
@@ -56,6 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 			}
+			// if mac os
 			else if (process.platform === 'darwin') {
 				if (fs.existsSync("/Applications/dosbox-x.app")) {
 					dosBoxXLoc = "/Applications/dosbox-x.app";
