@@ -79,7 +79,7 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 		else if (process.platform === 'darwin') {
-			cp.exec("open -a " + dosBoxXLoc + " -n --args -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+			cp.exec("open -a \"" + dosBoxXLoc + "\" -n --args -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
 				if (err) {
