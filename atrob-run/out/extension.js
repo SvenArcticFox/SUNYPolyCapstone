@@ -47,20 +47,10 @@ function activate(context) {
     else {
         atRobLoc = "";
     }
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "atrob-run" is now active!');
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('atrob-run.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from atrobots-runner!');
-    });
+    console.log("AT-Robots Runner active!");
     let run = vscode.commands.registerCommand('atrob-run.run', () => {
         const cp = require("child_process");
-        if (dosBoxXLoc === "") {
+        if (dosBoxXLoc === "" || dosBoxXLoc === undefined) {
             // if windows
             if (process.platform === 'win32') {
                 if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
@@ -88,18 +78,24 @@ function activate(context) {
             storageManager.setValue("dosBoxXloc", dosBoxXLoc);
         }
         console.log(atRobLoc);
-        if (atRobLoc === "") {
+        if (atRobLoc === "" || atRobLoc === undefined) {
             vscode.window.showErrorMessage("AT-Robots could not be found. Please specify the location of the folder that contains AT-Robots by using the \"Set AT-Robots Location\" command.");
-            console.log("A dog with human fingers");
+            console.log("AT-Robots variable is left blank");
             return;
         }
         else if (!fs.existsSync(atRobLoc)) {
             vscode.window.showErrorMessage("AT-Robots could not be found. Please specify the location of the folder that contains AT-Robots by using the \"Set AT-Robots Location\" command.");
-            console.log("YO MAMAAAAAAAAAA!!! OHHHHHHH!!!");
+            console.log("ATRobots location specified is not valid.");
             return;
         }
         if (process.platform === 'win32') {
-            // run DosBox-x with AT-Robots
+            cp.exec(dosBoxXLoc + " -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (err) {
+                    console.log('error: ' + err);
+                }
+            });
         }
         else if (process.platform === 'darwin') {
             cp.exec("open -a " + dosBoxXLoc + " -n --args -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
@@ -110,23 +106,28 @@ function activate(context) {
                 }
             });
         }
-        vscode.window.showInformationMessage('This is the run function!');
+        vscode.window.showInformationMessage('DOSBox is now running!');
     });
     let setAtRobLoc = vscode.commands.registerCommand('atrob-run.setATRobLoc', async function () {
         const tempLoc = await vscode.window.showInputBox({
             placeHolder: "AT-Robots Location",
-            prompt: "Enter the folder that contains the AT-Robots executable",
+            prompt: "Enter the folder that contains the AT-Robots executable. Please make sure that path name does not have quotes around it or has any spaces.",
         });
         if (tempLoc === '') {
             vscode.window.showErrorMessage("AT-Robots location was not specified");
         }
-        if (tempLoc !== undefined) {
-            console.log(tempLoc);
-            atRobLoc = tempLoc;
-            storageManager.setValue("atRobLoc", atRobLoc);
+        else if (tempLoc !== undefined) {
+            if (fs.existsSync(tempLoc)) {
+                console.log(tempLoc);
+                atRobLoc = tempLoc;
+                storageManager.setValue("atRobLoc", atRobLoc);
+                vscode.window.showInformationMessage('AT-Robots location successfully set!');
+            }
+            else {
+                vscode.window.showErrorMessage("Specified AT-Robots location does not exist. Please specify a new location.");
+            }
         }
     });
-    context.subscriptions.push(disposable);
     context.subscriptions.push(run);
     context.subscriptions.push(setAtRobLoc);
 }
