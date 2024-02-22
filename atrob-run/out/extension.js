@@ -83,13 +83,8 @@ function activate(context) {
             console.log("AT-Robots variable is left blank");
             return;
         }
-        else if (!fs.existsSync(atRobLoc)) {
-            vscode.window.showErrorMessage("AT-Robots could not be found. Please specify the location of the folder that contains AT-Robots by using the \"Set AT-Robots Location\" command.");
-            console.log("ATRobots location specified is not valid.");
-            return;
-        }
         if (process.platform === 'win32') {
-            cp.exec(dosBoxXLoc + " -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+            cp.exec("\"" + dosBoxXLoc + "\" -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
                 if (err) {
@@ -109,7 +104,7 @@ function activate(context) {
         vscode.window.showInformationMessage('DOSBox is now running!');
     });
     let setAtRobLoc = vscode.commands.registerCommand('atrob-run.setATRobLoc', async function () {
-        const tempLoc = await vscode.window.showInputBox({
+        var tempLoc = await vscode.window.showInputBox({
             placeHolder: "AT-Robots Location",
             prompt: "Enter the folder that contains the AT-Robots executable. Please make sure that path name does not have quotes around it or has any spaces.",
         });
@@ -117,7 +112,14 @@ function activate(context) {
             vscode.window.showErrorMessage("AT-Robots location was not specified");
         }
         else if (tempLoc !== undefined) {
+            //removes quotes from ends of string
+            if (tempLoc?.charAt(0) == "\"") {
+                tempLoc = tempLoc.split("\"")[1];
+            }
             if (fs.existsSync(tempLoc)) {
+                //add single quotes to temp location to counteract whitespace
+                tempLoc = "\'" + tempLoc;
+                tempLoc = tempLoc + "\'";
                 console.log(tempLoc);
                 atRobLoc = tempLoc;
                 storageManager.setValue("atRobLoc", atRobLoc);
