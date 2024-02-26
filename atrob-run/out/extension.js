@@ -93,7 +93,7 @@ function activate(context) {
             });
         }
         else if (process.platform === 'darwin') {
-            cp.exec("open -a \"" + dosBoxXLoc + "\" -n --args -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+            cp.exec("export atRobLoc=" + atRobLoc + "; open -a \"" + dosBoxXLoc + "\" -n --args -c \"mount c ${atRobLoc}\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
                 if (err) {
@@ -118,8 +118,16 @@ function activate(context) {
             }
             if (fs.existsSync(tempLoc)) {
                 //add single quotes to temp location to counteract whitespace
-                tempLoc = "\'" + tempLoc;
-                tempLoc = tempLoc + "\'";
+                if (process.platform === 'win32') {
+                    tempLoc = "\'" + tempLoc;
+                    tempLoc = tempLoc + "\'";
+                }
+                else if (process.platform === 'darwin') {
+                    tempLoc = "\"" + tempLoc;
+                    tempLoc = tempLoc + "\"";
+                    tempLoc = "\'" + tempLoc;
+                    tempLoc = tempLoc + "\'";
+                }
                 console.log(tempLoc);
                 atRobLoc = tempLoc;
                 storageManager.setValue("atRobLoc", atRobLoc);
