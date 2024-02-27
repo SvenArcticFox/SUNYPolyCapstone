@@ -14,16 +14,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "atrob-run.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "atrob-run.run",
-        "title": "Run AT-Robots"
+        "title": "AT-Robots: Run AT-Robots"
       },
       {
         "command": "atrob-run.setATRobLoc",
-        "title": "Set AT-Robots location"
+        "title": "AT-Robots: Set AT-Robots location"
       }
     ]
   },
