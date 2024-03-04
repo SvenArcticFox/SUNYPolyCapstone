@@ -20,6 +20,10 @@
       {
         "command": "atrob-run.setATRobLoc",
         "title": "AT-Robots: Set AT-Robots location"
+      },
+      {
+        "command": "atrob-run.setDosBoxXLoc",
+        "title": "AT-Robots: Set DosBOX-X location"
       }
     ]
   },
