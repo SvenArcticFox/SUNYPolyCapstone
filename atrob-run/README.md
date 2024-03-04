@@ -1,6 +1,6 @@
 # atrob-run README
 
-This extension runs AT-Robots through DOSBox-X from Visual Studio Code. This extension combined with the language support extension provides a fully featured IDE for programm robots in AT-Robots assembly.
+This extension runs AT-Robots through DOSBox-X from Visual Studio Code. This extension combined with the language support extension provides a fully featured IDE for programming robots in AT-Robots assembly.
 
 ## Features
 
