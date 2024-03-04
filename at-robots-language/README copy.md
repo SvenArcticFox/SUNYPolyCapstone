@@ -1,6 +1,6 @@
 # at-robots-language README
 
-This extension provides language support for the AT-Robots assembly language to Visual Studio Code. This includes full syntax highlighting and icons on AT-Robots assembly files.
+This is the README for your extension "at-robots-language". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

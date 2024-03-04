@@ -19,6 +19,13 @@
         "light": "./T-ROBOTS.ICO",
         "dark": "./T-ROBOTS.ICO"
       }
+    },
+    {
+      "id": "atrobots-locked",
+      "aliases": ["AT-Robots Locked", "atrobots-locked"],
+      "extensions": [
+        ".atl"
+      ]
     }],
     "grammars": [{
       "language": "atrobots",

@@ -1,16 +1,12 @@
 # atrob-run README
 
-This is the README for your extension "atrob-run". After writing up a brief description, we recommend including the following sections.
+This extension runs AT-Robots through DOSBox-X from Visual Studio Code. This extension combined with the language support extension provides a fully featured IDE for programm robots in AT-Robots assembly.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Set AT-Robots Location: Sets the location of the AT-Robots folder.
+- Set DosBOX-X Location: Sets the location of the DOSBox-X executable/application. If no location is specified or this function is never run, the default installation location is used. (C:\\dosbox-x\\dosbox-x.exe for windows and /Applications/dosbox-x.app on macOS).
+ - Run AT-Robots: Runs AT-Robots and sets the location of DOSBox-X to the default locations above if the command was never run.
 
 ## Requirements
 

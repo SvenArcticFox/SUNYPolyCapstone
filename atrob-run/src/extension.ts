@@ -141,9 +141,10 @@ export function activate(context: vscode.ExtensionContext) {
 			placeHolder: "DosBox-X location",
 			prompt: "Enter the location of the DosBOX-X executable/application.",
 		});
-		
+					// Resets the DOSBox-X location to the default location if the input box was left blank.
 		if (tempLoc === '') {
 			vscode.window.showErrorMessage("DosBOX-X location was not specified. Using Default location.");
+			// Resets the DOSBox-X location to the default location if the input box was left blank.
 			// if windows
 			if (process.platform === 'win32') {
 				if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
@@ -165,7 +166,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			}
 			else {
-				vscode.window.showErrorMessage("Sorry, your system is not supported by this extension.");
+				vscode.window.showErrorMessage("Sorry, your system is not supported by this extension. Could not set default location");
 				return;
 			}
 			storageManager.setValue("dosBoxXloc", dosBoxXLoc);

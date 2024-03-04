@@ -1,6 +1,6 @@
-# at-robots-language README
+# atrob-run README
 
-This extension provides language support for the AT-Robots assembly language to Visual Studio Code. This includes full syntax highlighting and icons on AT-Robots assembly files.
+This is the README for your extension "atrob-run". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
@@ -48,6 +48,12 @@ Fixed issue #.
 Added features X, Y, and Z.
 
 ---
+
+## Following extension guidelines
+
+Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+
+* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
 ## Working with Markdown
 
