@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 				vscode.window.showErrorMessage("Sorry, your system is not supported by this extension.");
 				return;
 			}
-			storageManager.setValue("dosBoxXloc", dosBoxXLoc);
+			storageManager.setValue("dosBoxXLoc", dosBoxXLoc);
 		}
 
 		console.log(atRobLoc);
