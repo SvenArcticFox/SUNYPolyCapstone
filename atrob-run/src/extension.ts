@@ -169,7 +169,7 @@ export function activate(context: vscode.ExtensionContext) {
 				vscode.window.showErrorMessage("Sorry, your system is not supported by this extension. Could not set default location. The location in VS Code is unchanged.");
 				return;
 			}
-			storageManager.setValue("dosBoxXloc", dosBoxXLoc);
+			storageManager.setValue("dosBoxXLoc", dosBoxXLoc);
 		}
 
 
