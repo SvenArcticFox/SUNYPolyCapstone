@@ -101,7 +101,7 @@ function activate(context) {
                 }
             });
         }
-        vscode.window.showInformationMessage('DOSBox is now running!');
+        vscode.window.showInformationMessage('AT-Robots is now running within DOSBox-X!');
     });
     let setAtRobLoc = vscode.commands.registerCommand('atrob-run.setATRobLoc', async function () {
         var tempLoc = await vscode.window.showInputBox({
@@ -141,17 +141,19 @@ function activate(context) {
     let setDosBoxXLoc = vscode.commands.registerCommand('atrob-run.setDosBoxXLoc', async function () {
         var tempLoc = await vscode.window.showInputBox({
             placeHolder: "DosBox-X location",
-            prompt: "Enter the location of the DosBOX-X executable/application.",
+            prompt: "Enter the location of the DosBOX-X executable/application. Leave the text box blank to reset the location of DOSBox-X in VS Code back to the default installation location.",
         });
+        // Resets the DOSBox-X location to the default location if the input box was left blank.
         if (tempLoc === '') {
-            vscode.window.showErrorMessage("DosBOX-X location was not specified. Using Default location.");
+            vscode.window.showInformationMessage("DosBOX-X location was not specified. Setting to default location.");
+            // Resets the DOSBox-X location to the default location if the input box was left blank.
             // if windows
             if (process.platform === 'win32') {
                 if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
                     dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
                 }
                 else {
-                    vscode.window.showErrorMessage("DosBox-X could not be found. Please install DOSBox-X into C:\\dosbox-x");
+                    vscode.window.showErrorMessage("DosBox-X could not be found. Please install DOSBox-X into C:\\dosbox-x. The location in VS Code has not been changed.");
                     return;
                 }
             }
@@ -161,12 +163,12 @@ function activate(context) {
                     dosBoxXLoc = "/Applications/dosbox-x.app";
                 }
                 else {
-                    vscode.window.showErrorMessage("DosBox-X could not be found. Please put dosbox-x.app into /Applications");
+                    vscode.window.showErrorMessage("DosBox-X could not be found. Please put dosbox-x.app into /Applications. The location in VS Code has not been changed.");
                     return;
                 }
             }
             else {
-                vscode.window.showErrorMessage("Sorry, your system is not supported by this extension.");
+                vscode.window.showErrorMessage("Sorry, your system is not supported by this extension. Could not set default location. The location in VS Code is unchanged.");
                 return;
             }
             storageManager.setValue("dosBoxXloc", dosBoxXLoc);
@@ -177,15 +179,6 @@ function activate(context) {
                 tempLoc = tempLoc.split("\"")[1];
             }
             if (fs.existsSync(tempLoc)) {
-                //add single quotes to temp location to counteract whitespace
-                if (process.platform === 'win32') {
-                    tempLoc = "\'" + tempLoc;
-                    tempLoc = tempLoc + "\'";
-                }
-                else if (process.platform === 'darwin') {
-                    tempLoc = "\"" + tempLoc;
-                    tempLoc = tempLoc + "\"";
-                }
                 console.log(tempLoc);
                 dosBoxXLoc = tempLoc;
                 storageManager.setValue("dosBoxXLoc", dosBoxXLoc);
