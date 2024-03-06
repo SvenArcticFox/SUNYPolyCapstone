@@ -182,10 +182,10 @@ function activate(context) {
                 console.log(tempLoc);
                 dosBoxXLoc = tempLoc;
                 storageManager.setValue("dosBoxXLoc", dosBoxXLoc);
-                vscode.window.showInformationMessage('AT-Robots location successfully set!');
+                vscode.window.showInformationMessage('DOSBox-X location successfully set!');
             }
             else {
-                vscode.window.showErrorMessage("Specified AT-Robots location does not exist. Please specify a new location.");
+                vscode.window.showErrorMessage("Specified DOSBox-X location does not exist. Please specify a new location.");
             }
         }
     });
