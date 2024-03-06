@@ -8,50 +8,13 @@ This extension runs AT-Robots through DOSBox-X from Visual Studio Code. This ext
 - Set DosBOX-X Location: Sets the location of the DOSBox-X executable/application. If no location is specified or this function is never run, the default installation location is used. (C:\\dosbox-x\\dosbox-x.exe for windows and /Applications/dosbox-x.app on macOS).
  - Run AT-Robots: Runs AT-Robots and sets the location of DOSBox-X to the default locations above if the command was never run.
 
-## Requirements
+## Installation Instructions
+1. Clone repo
+2. Copy this folder into ```~/.vscode/extensions/```, ```~``` represents your home directory.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+## Setup Instructions
+1. Set AT-Robots folder location
+    1. Copy the absolute path to the AT-Robots folder. This can look like ```C:\path\to\at\robots\folder``` or ```/path/to/at/robots/folder```
+    2. Click on the search bar on the top of the window and enter ```>AT-Robots: Set AT-Robots location``` ![Image of first step](images/setATRobLoc_Instructions/step1.png)
+    3. Press enter and paste the location into the text box. ![Image of second step](images/setATRobLoc_Instructions/step2.png)
+    4. Press enter and you should get a message stating the location was set successfully. ![Image of second step](images/setATRobLoc_Instructions/step3.png)

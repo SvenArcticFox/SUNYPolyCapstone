@@ -97,7 +97,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		var tempLoc  = await vscode.window.showInputBox({
 			placeHolder: "AT-Robots Location",
-			prompt: "Enter the folder that contains the AT-Robots executable. Please make sure that path name does not have quotes around it or has any spaces.",
+			prompt: "Enter the folder that contains the AT-Robots executable.",
 		});
 		
 		if (tempLoc === '') {
