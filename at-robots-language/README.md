@@ -6,4 +6,4 @@ This extension provides language support for the AT-Robots assembly language to 
 
 ## Installation Instructions
 1. Clone repo
-2. Copy this folder into ```~/.vscode/extensions/```, ```~``` represents your home directory.
+2. Copy this folder into ```~/.vscode/extensions/```. ```~``` represents your home directory.
