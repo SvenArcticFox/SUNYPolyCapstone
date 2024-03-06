@@ -27,5 +27,7 @@ This extension does not currently support Linux!
 2. Click on the search bar on the top of the window and enter ```>AT-Robots: Set DOSBox-X location``` [Image of first step](images/setDosboxXLoc_instructions/step1.png)
 3. Press enter and paste the location into the text box. [Image of first step](images/setDosboxXLoc_instructions/step2.png)
 4. Press enter and you should get a message stating the location was successfully set. [Image of first step](images/setDosboxXLoc_instructions/step3.png)
-- **Note:** If you want to reset the DOSBox-X location in VS Code back to the default installtion location, perform the steps above except instead of pasting in the path to DOSBox-X, just leave the text box blank and press enter. You will get a message stating that the location has been reset.  [Image of blank text box](images/setDosboxXLoc_instructions/blankbox.png) [Image of reset](images/setDosboxXLoc_instructions/reset.png)
+- **Note:** If you want to reset the DOSBox-X location in VS Code back to the default installtion location, perform the steps above except instead of pasting in the path to DOSBox-X, just leave the text box blank and press enter. You will get a message stating that the location has been reset.  
+[Image of blank text box](images/setDosboxXLoc_instructions/blankbox.png) 
+[Image of reset](images/setDosboxXLoc_instructions/reset.png)
 
