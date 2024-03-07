@@ -1,7 +1,8 @@
 {
   "name": "atrob-run",
-  "displayName": "atrobots-runner",
+  "displayName": "AT-Robots Runner",
   "description": "Runs AT-Robots from VS-Code",
+  "publisher": "Trevor Radez",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.86.0"

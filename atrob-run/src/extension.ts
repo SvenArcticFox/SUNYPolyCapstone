@@ -10,8 +10,8 @@ import * as fs from 'fs';
 export function activate(context: vscode.ExtensionContext) {
 	
 	let storageManager = new LocalStorageService(context.globalState);
-	let dosBoxXLoc : string;
-	let atRobLoc : string;
+	let dosBoxXLoc : string | undefined;
+	let atRobLoc : string | undefined;
 
 	if (storageManager.getValue("dosBoxXLoc") !== undefined) {
 		dosBoxXLoc = storageManager.getValue("dosBoxXLoc");
@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
 		
 
 		if (process.platform === 'win32') {
-			cp.exec("\"" +dosBoxXLoc + "\" -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+			cp.exec("\"" +dosBoxXLoc + "\" -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err: any, stdout: any, stderr: any) => {
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
 				if (err) {
@@ -79,7 +79,7 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 		else if (process.platform === 'darwin') {
-			cp.exec("export atRobLoc=" + atRobLoc + "; export dosBoxXLoc=" + dosBoxXLoc + "; open \"${dosBoxXLoc}\" -n --args -c \"mount c ${atRobLoc}\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err, stdout, stderr) => {
+			cp.exec("export atRobLoc=" + atRobLoc + "; export dosBoxXLoc=" + dosBoxXLoc + "; open \"${dosBoxXLoc}\" -n --args -c \"mount c ${atRobLoc}\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err: any, stdout: any, stderr: any) => {
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
 				if (err) {
@@ -107,7 +107,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		else if (tempLoc !== undefined) {
 			//removes quotes from ends of string
-			if (tempLoc?.charAt(0) == "\"") {
+			if (tempLoc?.charAt(0) === "\"") {
 				tempLoc = tempLoc.split("\"")[1];
 			}
 			if (fs.existsSync(tempLoc)) {
@@ -175,7 +175,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		else if (tempLoc !== undefined) {
 			//removes quotes from ends of string
-			if (tempLoc?.charAt(0) == "\"") {
+			if (tempLoc?.charAt(0) === "\"") {
 				tempLoc = tempLoc.split("\"")[1];
 			}
 			if (fs.existsSync(tempLoc)) {

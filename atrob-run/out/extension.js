@@ -113,7 +113,7 @@ function activate(context) {
         }
         else if (tempLoc !== undefined) {
             //removes quotes from ends of string
-            if (tempLoc?.charAt(0) == "\"") {
+            if (tempLoc?.charAt(0) === "\"") {
                 tempLoc = tempLoc.split("\"")[1];
             }
             if (fs.existsSync(tempLoc)) {
@@ -175,7 +175,7 @@ function activate(context) {
         }
         else if (tempLoc !== undefined) {
             //removes quotes from ends of string
-            if (tempLoc?.charAt(0) == "\"") {
+            if (tempLoc?.charAt(0) === "\"") {
                 tempLoc = tempLoc.split("\"")[1];
             }
             if (fs.existsSync(tempLoc)) {

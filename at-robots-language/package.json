@@ -1,7 +1,8 @@
 {
   "name": "at-robots-language",
-  "displayName": "ATRobotsLanguage",
+  "displayName": "AT-Robots Language",
   "description": "Adds AT-Robots Assembly language support",
+  "publisher": "Trevor Radez",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"
