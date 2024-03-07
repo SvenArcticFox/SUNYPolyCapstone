@@ -9,11 +9,7 @@ This extension runs AT-Robots through DOSBox-X from Visual Studio Code. This ext
 - Set AT-Robots Location: Sets the location of the AT-Robots folder.
 - Set DosBOX-X Location: Sets the location of the DOSBox-X executable/application. If no location is specified or this function is never run, the default installation location is used. (```C:\\dosbox-x\\dosbox-x.exe``` for windows and ```/Applications/dosbox-x.app``` on macOS).
  - Run AT-Robots: Runs AT-Robots and sets the location of DOSBox-X to the default locations above if the command was never run.
-
-## Installation Instructions
-1. Clone repo
-2. Copy this folder into ```~/.vscode/extensions/```, ```~``` represents your home directory.
-
+ 
 ## Setup Instructions
 ### Set AT-Robots folder location
 1. Copy the absolute path to the AT-Robots folder. This can look like ```C:\path\to\at\robots\folder``` or ```/path/to/at/robots/folder```

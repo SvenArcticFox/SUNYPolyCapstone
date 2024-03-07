@@ -12,3 +12,6 @@ Adds AT Robots assembly language support to AT-Robots and allows users to start 
 2. Install each .visx file
 3. Go to Extensions >  the ```...``` button > Install from VISX file.
 4. Select .visx file.
+
+## Setup Instructions:
+- Please consult README inside of each folder.
