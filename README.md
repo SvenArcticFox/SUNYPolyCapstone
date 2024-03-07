@@ -8,5 +8,7 @@ Adds AT Robots assembly language support to AT-Robots and allows users to start 
 - *at-robots-extension-pack:* Extension pack that combines both the language extension and the runner extension.
 
 ## Installation Instructions:
-1. Clone this repo
-2. Copy all folders in repo into ```~/.vscode/extensions/```. ```~``` represents your home directory.
+1. Download zip release
+2. Install each .visx file
+3. Go to Extensions >  the ```...``` button > Install from VISX file.
+4. Select .visx file.
