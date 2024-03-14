@@ -9,19 +9,19 @@ import * as fs from 'fs';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	
-	let storageManager = new LocalStorageService(context.globalState);
-	let dosBoxXLoc : string | undefined;
-	let atRobLoc : string | undefined;
+	let storageManager = new LocalStorageService(context.globalState); // stores location variables 
+	let dosBoxXLoc : string | undefined; // location of DosBOX-X
+	let atRobLoc : string | undefined; // location of AT-Robots directory
 
 	if (storageManager.getValue("dosBoxXLoc") !== undefined) {
-		dosBoxXLoc = storageManager.getValue("dosBoxXLoc");
+		dosBoxXLoc = storageManager.getValue("dosBoxXLoc"); // get last DosBOX-X location if it was defined
 	}
 	else {
 		dosBoxXLoc = "";
 	}
 
 	if (storageManager.getValue("atRobLoc") !== undefined) {
-		atRobLoc = storageManager.getValue("atRobLoc");
+		atRobLoc = storageManager.getValue("atRobLoc"); // get last AT-Robots location if it was defined
 	}
 	else {
 		atRobLoc = "";
@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// if windows
 			if (process.platform === 'win32') {
 				if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
-					dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
+					dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe"; // set DOSBOX-X location to the default location if it exists.
 				}
 				else {
 					vscode.window.showErrorMessage("DosBox-X could not be found. Please use the \"Set DosBox-X Location\" command to set the location DOSBox-X executable.");
@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// if mac os
 			else if (process.platform === 'darwin') {
 				if (fs.existsSync("/Applications/dosbox-x.app")) {
-					dosBoxXLoc = "/Applications/dosbox-x.app";
+					dosBoxXLoc = "/Applications/dosbox-x.app"; // set DOSBOX-X location to the default location if it exists.
 				}
 				else {
 					vscode.window.showErrorMessage("DosBox-X could not be found. Please use the \"Set DosBox-X Location\" command to set the location DOSBox-X executable.");
@@ -116,6 +116,7 @@ export function activate(context: vscode.ExtensionContext) {
 					tempLoc = "\'" + tempLoc;
 					tempLoc = tempLoc + "\'";
 				}
+				// add double quotes surrounded by single queotes to counteract whitespace and more easily pass arguments to DOSBox-X
 				else if (process.platform === 'darwin') {
 					tempLoc = "\"" + tempLoc;
 					tempLoc = tempLoc + "\"";
@@ -148,7 +149,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// if windows
 			if (process.platform === 'win32') {
 				if (fs.existsSync("C:\\DOSBox-X\\dosbox-x.exe")) {
-					dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe";
+					dosBoxXLoc = "C:\\DOSBox-X\\dosbox-x.exe"; // set DOSBOX-X location to the default location if it exists.
 				}
 				else {
 					vscode.window.showErrorMessage("DosBox-X could not be found. Please install DOSBox-X into C:\\dosbox-x. The location in VS Code has not been changed.");
@@ -158,13 +159,14 @@ export function activate(context: vscode.ExtensionContext) {
 			// if mac os
 			else if (process.platform === 'darwin') {
 				if (fs.existsSync("/Applications/dosbox-x.app")) {
-					dosBoxXLoc = "/Applications/dosbox-x.app";
+					dosBoxXLoc = "/Applications/dosbox-x.app"; // set DOSBOX-X location to the default location if it exists.
 				}
 				else {
 					vscode.window.showErrorMessage("DosBox-X could not be found. Please put dosbox-x.app into /Applications. The location in VS Code has not been changed.");
 					return;
 				}
 			}
+			// All other operating systems/web
 			else {
 				vscode.window.showErrorMessage("Sorry, your system is not supported by this extension. Could not set default location. The location in VS Code is unchanged.");
 				return;
