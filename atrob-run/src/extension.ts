@@ -70,6 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
 		
 
 		if (process.platform === 'win32') {
+			// start windows process
 			cp.exec("\"" +dosBoxXLoc + "\" -c \"mount c " + atRobLoc + "\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err: any, stdout: any, stderr: any) => {
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
@@ -79,6 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 		else if (process.platform === 'darwin') {
+			// star macOS process
 			cp.exec("export atRobLoc=" + atRobLoc + "; export dosBoxXLoc=" + dosBoxXLoc + "; open \"${dosBoxXLoc}\" -n --args -c \"mount c ${atRobLoc}\" -c \"c:\" -c \"atrobs\" -c \"exit\"", (err: any, stdout: any, stderr: any) => {
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
